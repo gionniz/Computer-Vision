@@ -14,7 +14,7 @@ Además, en la segunda parte es posible realizar una **identificaccion** de un s
 
 * **2)** En el seguendo ejercicio se quiere **reconocer un sujeto** (identificado en una imagen con el solo) **buscandolo en otra imagen de grupo**,  
 utilizando DeepFace y RetinaFace (para deteccion de caras en imagene "crowded".
-![image](https://github.com/gionniz/Computer-Vision/assets/2800642/0bc76f19-f0d2-40a7-a97b-43fca1fddbbe)
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/f37f57d0-2987-4da0-bdfc-25c9b7266d18)
 
 
 ### Link
@@ -30,14 +30,29 @@ Trabajo realizado por:
 
 
 ## Ejercicio 1  
+**Parte 1**
+- **Paso 1. Subir una imagen**:  
+  Es posible utilizar 2 métodos para cargar imágenes para su análisis:
+  - **upload** = cargar imágenes guardadas localmente
+  - **webcam** = GoogleColab de momento (dic 2023) NO permite utilizar webcam y stream video en tiempo real directamente.  
+    Se ha utilizado una solución en la que es posible acceder a la cámara con un **"hack"** y obtener un fotograma.
+    Recursos:
+    - https://answers.opencv.org/question/231737/videocapture-in-colab/
+    - https://colab.research.google.com/notebooks/snippets/advanced_outputs.ipynb#scrollTo=buJCl90WhNfq
+    - https://colab.research.google.com/drive/1fwqYCxcgEkWTpIgvdLGzJCSYcMI7c3xF?usp=sharing#scrollTo=xS_KFScRb1gv
 
-- **Paso 1. Subir una imagen**: 
 
 - **Paso 2. Analisis del sujeto**: Utilizamos DeepFace para analizar la edad, el género, la raza y las emociones de la persona.
-- ![image](https://github.com/gionniz/Computer-Vision/assets/2800642/26480cc8-ac9f-44e9-9024-f7565e2a0eed)  
-  
-- **Paso 3. Verificar identidad**: En la segunda parte verificamos si son la misma persona  
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/26480cc8-ac9f-44e9-9024-f7565e2a0eed)  
+
+**Parte 2**  
+- **Verificar identidad**: En la segunda parte la implementacion realizada permite verificar si 2 imagenes entra aquellas adquirisdas contienen la misma persona
 ![image](https://github.com/gionniz/Computer-Vision/assets/2800642/73d9f98c-56dd-43dd-9363-55a9d940d91a)
 
 
+
 ## Ejercicio 2
+En el segundo ejercicio se ha utilizadp por primero **RetinaFace** para la detección de caras en imágenes caóticas y "crowded", es decir muy llena de sujetos.  
+Sucesivamente, se utiliza **DeepFace** para verificar y confrontar todas la caras detectadas con otra de referencia.  
+El **objetivo** es comparar las caras detectadas con una de otro sujeto de referencia (en una imagen diferente) y **reconcer a la persona correcta**.
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/0bc76f19-f0d2-40a7-a97b-43fca1fddbbe)
