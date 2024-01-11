@@ -34,13 +34,13 @@ Esta etapa tiene como objetivo aislar y segmentar las matrículas de los vehícu
 Una vez detectados los vehículos, la etapa siguiente consiste en procesar las regiones de interés (ROI) que contienen los vehículos para extraer las matrículas,
 en en particular la parte inferior de la imagen.  
 Se exploraron técnicas como la segmentación de imágenes, la detección de contornos y el procesamiento basado en regiones para aislar y extraer la información.
-Sin embargo Sin embargo, este enfoque inicial se enfrentó a dificultades para extraer con precisión matrículas debido a las variaciones en la iluminación, pose y calidad de la imagen.  
+Sin embargo, este enfoque inicial se enfrentó a dificultades para extraer con precisión matrículas debido a las variaciones en la iluminación, pose y calidad de la imagen.  
 
 ![image](https://github.com/gionniz/Computer-Vision/assets/2800642/b76c337d-04e7-48ea-b819-7e98cee8bef7)
 
 **Segundo intento de extracción de matrículas de vehículos**
-En el segundo intento, la atención se centró en un enfoque perfeccionado para la extracción de matrículas tras la detección de vehículos, con estrategia revisada más detallada y exhaustiva.
-se realizaron optimizaciones en el proceso de selección de contornos aplicando técnicas avanzadas de procesamiento de imágenes,  
+En el segundo intento, la atención se centró en un enfoque perfeccionado para la extracción de matrículas tras la detección de vehículos, con una estrategia revisada más detallada y exhaustiva.
+Se realizaron optimizaciones en el proceso de selección de contornos aplicando técnicas avanzadas de procesamiento de imágenes,  
 como la conversión a escala de grises, el umbral, la detección de bordes (que mejoró mucho el resultado final), la detección de contornos y el filtrado por zonas, para localizar y aislar con mas precisión.  
 
 ![image](https://github.com/gionniz/Computer-Vision/assets/2800642/edcaa760-428b-4f9a-8c57-66794c395f5c)
@@ -51,13 +51,15 @@ A pesar de los retos inherentes a la variedad de formatos y condiciones de las m
 
 ![image](https://github.com/gionniz/Computer-Vision/assets/2800642/546e6202-fbaf-4f5e-8470-ae7cc4afac06)
 
-
 ### Detector 2
 ## Modelo Yolo Custom
 En esta fase, nuestro enfoque se apartó del proceso manual, en su lugar, nos adentramos en el entrenamiento de un detector personalizado utilizando YOLOv8.  
 Para iniciar el entrenamiento, comenzamos con la anotación de imágenes, la utilización de un conjunto de datos de Roboflow, que incluía 200 imágenes de matrículas preetiquetadas, simplificó nuestra tarea.  
 Con el conjunto de datos perfectamente organizado en carpetas de entrenamiento, validación y prueba, exportarlo al formato YOLOv8 fue sencillo y una vez compiladas las imágenes y las anotaciones, creamos un archivo .yaml,  
 para el entrenamiento.  
+
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/457c3d0c-c899-42db-9ecb-4d80a60c8098)
+
 Este archivo definía parámetros esenciales como los directorios de entrenamiento, validación y prueba, junto con los nombres de las clases y el número de clases. 
 Tras un entrenamiento satisfactorio, un resumen visual mostraba la reducción de la función de pérdida y la mejora de la precisión por época. 
 
@@ -66,7 +68,8 @@ Tras un entrenamiento satisfactorio, un resumen visual mostraba la reducción de
 Una vez completado el entrenamiento, introdujimos la placa modelo en nuestro detector entrenado para detectar matrículas.
 A continuación, formulamos una función de detección para identificar y mostrar hábilmente matrículas en imágenes de vehículos.
 
-![image](https://github.com/gionniz/Computer-Vision/assets/2800642/457c3d0c-c899-42db-9ecb-4d80a60c8098)
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/fcfad9c9-91ec-4e05-baeb-8abcf897e2ec)
+
 
 ## Fuentes y tecnologias utilizadas
 Se emplearon diversas tecnologías y herramientas,
@@ -79,12 +82,8 @@ La integración de algoritmos de postprocesado podría aumentar la precisión en
 Otra vía de investigación interesante podría ser trabajar con vídeo en lugar de imágenes.  
 
 ## Otras Referncias
-REFERENCES
 
-https://www.cnet.com/a/img/resize/mission-impossible-dead-reckoning-fiat-500.jpg
-
-https://inside-machinelearning.com/en/yolov8-how-to-use/
-
-https://inside-machinelearning.com/en/bounding-boxes-python-function/
-
-https://blog.roboflow.com/how-to-train-yolov8-on-a-custom-dataset
+https://www.cnet.com/a/img/resize/mission-impossible-dead-reckoning-fiat-500.jpg  
+https://inside-machinelearning.com/en/yolov8-how-to-use/  
+https://inside-machinelearning.com/en/bounding-boxes-python-function/  
+https://blog.roboflow.com/how-to-train-yolov8-on-a-custom-dataset  
