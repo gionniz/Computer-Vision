@@ -1,6 +1,10 @@
 # Piedra, Papel, Tijeras
 **Trabajo Final de la asignatura de Visión por Computador Curso 2023/2024**
 
+![Victoria_small](https://github.com/gionniz/Computer-Vision/assets/2800642/db61c0c4-e7df-401f-9ac1-1d15aa2f762e)
+![Derrota_small](https://github.com/gionniz/Computer-Vision/assets/2800642/f54b4c6c-4d5c-4a39-902f-061323d489c3)
+![Empate_small](https://github.com/gionniz/Computer-Vision/assets/2800642/c021941f-a4c4-4bf9-8a56-3a51eff25ce4)
+
 ### Link
 El **codigo** y el **material** utilizado està disponibile en github y alos siguientes enlaces:  
 
