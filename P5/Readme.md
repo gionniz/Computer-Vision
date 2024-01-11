@@ -1,11 +1,5 @@
 # Práctica VC_P5 - Reconocimiento de matrículas - Curso 2023/2024
-
 Esta practica de la asignatura de **Vision por Computador** (nov 2023) tiene el objetivo de desarrollar un prototipo de sistema que identifique la matrícula de un vehículo a partir de imágenes (o video).  
-Para este propósito, se proporciona un modelo de detección de objetos, **YOLOv8**, para la detección de vehículos.  
-Además, para el reconocimiento de texto, se ha trabajado con **pytesseract**.  
-
-- **Primer Detector**: Para el primer detector, desglosaremos el proceso de detección de matrículas en tres partes. En primer lugar, nos enfocaremos en la identificación de vehículos en una imagen utilizando el modelo YOLOv8. Una vez obtenidas las detecciones de vehículos, procederemos a realizar un procesamiento en la imagen del vehículo detectado para buscar formas rectangulares, que corresponden a las matrículas. Por último, haremos uso de **pytesseract** para obtener el texto de la matrícula.
-- **Segundo Detector**: En este segundo detector, entrenamos nuestro propio modelo basado en **YOLOv8** con el fin de que detecte las matrículas de las imágenes.
 
 ### Link
 El codigo y el material utilizado està disponibile en github al link:  
@@ -15,11 +9,44 @@ El codigo y el material utilizado està disponibile en github al link:
 Trabajo realizado por:
 - **Giovanni Sgambato** y **Agata Cavigioli**
 
+## Motivacion del trabajo
+La detección de vehículos y la extracción eficiente de matrículas a partir de imágenes son elementos cruciales en los sistemas de vigilancia, seguridad vial y gestión del tráfico.  
+Esta propuesta responde a la necesidad de desarrollar un sistema capaz de identificar coches y extraer sus matrículas de forma precisa y rápida,  
+esencial para automatizar los procesos de vigilancia y control de vehículos.  
 
-## Primer detector
+El objetivo es proporcionar una solución robusta que permita el reconocimiento y registro de vehículos en entornos complejos mediante **YOLOv8**, 
+un algoritmo de detección de objetos, y posteriormente extraer las matrículas de estos vehículos mediante técnicas de **procesamiento de imágenes** y **reconocimiento óptico de caracteres** (OCR).   
 
-- **Paso 1. Carga del Modelo YOLO**: Se carga el modelo YOLO previamente entrenado.
-- **Paso 2. Detección de Vehículos**: Se realiza la detección de objetos en la imagen utilizando YOLO. Si se encuentra un vehículo, se resalta en la imagen original y se muestra la región de interés alrededor del vehículo.
-- **Paso 3. Detección de Matrículas (si se detecta un vehículo)**: Se convierte la región de interés (ROI) alrededor del vehículo a escala de grises y se aplica un umbral. Luego, se buscan los contornos y se filtran aquellos en la mitad inferior de la imagen. Se identifica el contorno más grande, que se asume como la matrícula del vehículo. Se muestra la matrícula y se utiliza Tesseract OCR para reconocer el texto.
+Se realizaron 2 intentos de detectores:
+- **Detector 1**: utilizando tecnicas de procesamiento de la imagen
+- **Detector 2**: utilizando ML y entrenando un nuevo modelo que detecte las matrículas como nueva clase de YOLO.
 
-A continuación se adjuntan las figuras del proceso descrito:
+## Descripcion tecnica del trabajo realizado
+### Detector 1
+**Implementación de YOLO para la detección de coches**  
+La implementación de YOLO (You Only Look Once) se basa en un modelo pre-entrenado capaz de detectar diversos objetos incluyendo vehículos, en imágenes.  
+Esta técnica permite identificación precisa de coches dentro de un conjunto diverso de objetos.  
+La primera parte del proyecto consiste en detectar un coche en una imagen y separarlo del fondo con un típico rectángulo de segmentación.
+
+**Primer intento de extracción de matrículas de vehículos**  
+La metodología utilizada para la extracción de matrículas se basa en técnicas de procesamiento de imágenes y detección de contornos.  
+Esta etapa tiene como objetivo aislar y segmentar las matrículas de los vehículos detectados para su sucesiva análisis.  
+Una vez detectados los vehículos, la etapa siguiente consiste en procesar las regiones de interés (ROI) que contienen los vehículos para extraer las matrículas,
+en en particular la parte inferior de la imagen.  
+Se exploraron técnicas como la segmentación de imágenes, la detección de contornos y el procesamiento basado en regiones para aislar y extraer la información.
+Sin embargo Sin embargo, este enfoque inicial se enfrentó a dificultades para extraer con precisión matrículas debido a las variaciones en la iluminación, pose y calidad de la imagen.  
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/b76c337d-04e7-48ea-b819-7e98cee8bef7)
+
+**Segundo intento de extracción de matrículas de vehículos**
+En el segundo intento, la atención se centró en un enfoque perfeccionado para la extracción de matrículas tras la detección de vehículos, con estrategia revisada más detallada y exhaustiva.
+se realizaron optimizaciones en el proceso de selección de contornos aplicando técnicas avanzadas de procesamiento de imágenes,  
+como la conversión a escala de grises, el umbral, la detección de bordes (que mejoró mucho el resultado final), la detección de contornos y el filtrado por zonas, para localizar y aislar con mas precisión.  
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/edcaa760-428b-4f9a-8c57-66794c395f5c)
+
+**Reconocimiento de texto con Tesseract OCR**
+La integración de Tesseract OCR permite reconocer y extraer el texto presente en las matrículas identificadas.  
+A pesar de los retos inherentes a la variedad de formatos y condiciones de las matrículas, esta herramienta ofrece una solución versátil para la identificación de texto.  
+![image](https://github.com/gionniz/Computer-Vision/assets/2800642/546e6202-fbaf-4f5e-8470-ae7cc4afac06)
+
+
+### Detector 2
